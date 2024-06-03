@@ -11,9 +11,12 @@ const query = async (prompt: string, model: string) => {
       max_tokens: 1000,
     })
     .then((res) => res.data.choices[0].text)
-    .catch(
-      (err) => `ChatGPT was unable to find an answer for that ${err.message}`
-    );
+    .catch((err) => {
+      console.log({ err });
+      console.log(
+        `ChatGPT was unable to find an answer for that ${err.message}`
+      );
+    });
 
   return res;
 };

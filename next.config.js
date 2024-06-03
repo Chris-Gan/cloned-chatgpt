@@ -1,10 +1,10 @@
 /** @type {import('next').NextConfig} */
 module.exports = {
   reactStrictMode: true,
-  images:{
+  images: {
     domains: ["links.papareact.com"],
   },
-  experimental:{
-    appDir: true
-  }
-}
+  experimental: {
+    appDir: true,
+  },
+};
