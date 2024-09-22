@@ -17,7 +17,12 @@ export default async function handler(
 ) {
   const models = await openai.listModels().then((res) => res.data.data);
 
-  const modelOptions = models.map((model) => ({
+  // Filter only valid chat models (e.g., GPT-4, GPT-3.5-Turbo)
+  const validModels = models.filter((model) =>
+    ["gpt-4", "gpt-4-32k", "gpt-3.5-turbo"].includes(model.id)
+  );
+
+  const modelOptions = validModels.map((model) => ({
     value: model.id,
     label: model.id,
   }));

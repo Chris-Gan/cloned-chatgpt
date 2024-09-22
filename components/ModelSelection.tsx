@@ -9,7 +9,7 @@ const fetchModels = async () =>
 const ModelSelection = () => {
   const { data: models, isLoading } = useSWR("models", fetchModels);
   const { data: model, mutate: setModel } = useSWR("model", {
-    fallbackData: "gpt-3.5-turbo-instruct",
+    fallbackData: "gpt-4",
   });
 
   return (

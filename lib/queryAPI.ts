@@ -1,16 +1,22 @@
 import openai from "./chatgpt";
 
 const query = async (prompt: string, model: string) => {
-  const res = openai
-    .createCompletion({
-      model,
-      prompt,
+  const res = await openai
+    .createChatCompletion({
+      model: model || "gpt-4", // Use a valid model, like "gpt-4"
+      messages: [
+        {
+          role: "user",
+          content: prompt, // Corrected prompt
+        },
+      ],
       temperature: 0.9,
-      top_p: 1,
-      n: 1,
       max_tokens: 1000,
     })
-    .then((res) => res.data.choices[0].text)
+    .then((res) => {
+      console.log({ res });
+      return res.data.choices[0].message?.content ?? "";
+    })
     .catch((err) => {
       console.log({ err });
       console.log(

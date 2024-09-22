@@ -17,7 +17,7 @@ const ChatInput = ({ chatId }: Props) => {
   const [prompt, setPrompt] = useState("");
   const { data: session } = useSession();
   const { data: model } = useSWR("model", {
-    fallbackData: "gpt-3.5-turbo-instruct",
+    fallbackData: "gpt-4",
   });
 
   const sendMessage = async (e: FormEvent<HTMLFormElement>) => {
